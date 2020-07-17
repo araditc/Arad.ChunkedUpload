@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Company>Arad ITC</Company>
+    <Authors>Ammar Heidari</Authors>
+    <Version>0.0.1</Version>
+    <Description>Chunked file uploading to a .NET Core 3.1 API server. The client uses Resumable.js, which in turn uses HTML 5 file API to generate the chunks.</Description>
+    <Copyright>Arad ITC</Copyright>
+    <PackageProjectUrl>https://github.com/araditc/Arad.ChunkedUpload</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/araditc/Arad.ChunkedUpload</RepositoryUrl>
+    <PackageIcon>arad-Logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netcoreapp3.1\appsettings.Development.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\appsettings.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="files_store\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Pic\arad-Logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+
+
+</Project>
