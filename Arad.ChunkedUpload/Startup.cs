@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Arad.ChunkedUpload.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,11 +28,13 @@ namespace Arad.ChunkedUpload
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            services.AddRazorPages();
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
 
+            services.AddControllersWithViews();
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Arad ChunkedUpload API", Version = "V1" }));
-            
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -53,9 +56,11 @@ namespace Arad.ChunkedUpload
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Arad ChunkedUpload API v1");
             });
             app.UseCors("MyPolicy");
-            app.UseRouting();
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(c => c.MapDefaultControllerRoute());
         }
 
     }

@@ -22,7 +22,6 @@ namespace Arad.ChunkedUpload.Controllers
     /// </summary>
     /// <remarks>Manages upload sessions</remarks>
     [Route("api/file")]
-    [EnableCors("MyPolicy")]
     public class FileController : Controller
     {
         private static UploadService uploadService = new UploadService(new LocalFileSystemRepository());
@@ -150,21 +149,24 @@ namespace Arad.ChunkedUpload.Controllers
             }
         }
 
-        private JsonResult badRequest(string message) {
+        private JsonResult badRequest(string message)
+        {
             var result = new JsonResult("{'message': '" + message + "' }");
             result.StatusCode = 400;
             return result;
         }
 
         Stream targetOutputStream = null;
-        [ApiExplorerSettings(IgnoreApi=true)]
-        public void SetOuputStream(Stream replacementStream) {
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public void SetOuputStream(Stream replacementStream)
+        {
             this.targetOutputStream = replacementStream;
         }
 
         HttpResponse targetResponse = null;
-        [ApiExplorerSettings(IgnoreApi=true)]
-        public void SetTargetResponse(HttpResponse replacementResponse) {
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public void SetTargetResponse(HttpResponse replacementResponse)
+        {
             this.targetResponse = replacementResponse;
         }
     }
